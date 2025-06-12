@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block adminpage %}
+
+<!-- Doctor Profile Section -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-4"> Profile of Dr.{{ doctor.name }} </h2> 
+        <div class="row">
+            <!-- Left Column - Profile Card -->
+            <div class="col-md-4 col-sm-6">
+                <div class="team-thumb wow fadeInUp card shadow-sm" data-wow-delay="0.4s">
+                    <img src="{{ doctor.profile_picture.url }}" class="img-responsive rounded-circle" alt="{{ doctor.name }}">
+                    <div class="team-info card-body text-center">
+                        <h3>{{ doctor.name }}</h3>
+                        <p class="text-muted">{{ doctor.specialist_department.name }}</p>
+                        <div class="team-contact-info">
+                            <p><i class="fa fa-id-badge"></i> ERP ID: {{ doctor.erp_id }}</p>
+                            <p><i class="fa fa-phone"></i> {{ doctor.phone_number }}</p>
+                            <p><i class="fa fa-envelope-o"></i> <a href="mailto:{{ doctor.email }}">{{ doctor.email }}</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Details Card -->
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="mb-3">Professional Overview</h5>
+                        <p class="lead">{{ doctor.name }} is a {{ doctor.specialist_department.name }} specialist with {{ doctor.years_of_experience }} years of experience, providing exceptional care to patients.</p>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5 class="mb-3">Consulting Hours</h5>
+                                <div class="mb-3">
+                                    <i class="fa fa-clock-o"></i> 
+                                    {{ doctor.consulting_hours_start|time:"H:i" }} - 
+                                    {{ doctor.consulting_hours_end|time:"H:i" }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="mb-3">Off Days</h5>
+                                <div class="badge-container">
+                                    {% if off_days %}
+                                        {% for day in off_days %}
+                                            <span class="badge bg-warning text-dark">{{ day }}</span>
+                                        {% endfor %}
+                                    {% else %}
+                                        <span class="text-muted">No scheduled off days</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <h5 class="mt-4">Profile Management</h5>
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" name="name" value="{{ doctor.name }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Contact Number</label>
+                                    <input type="tel" class="form-control" name="phone" value="{{ doctor.phone_number }}">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" name="email" value="{{ doctor.email }}">
+                                </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

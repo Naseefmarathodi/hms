@@ -1,0 +1,30 @@
+{% extends 'staffbase.html' %}
+{% load static %}
+
+{% block staffpage %}
+<div class="container mt-5">
+    <h2 class="mb-4">Update Patient Information</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="mb-3">
+                <label class="form-label">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                    <div class="text-danger">
+                        {{ field.errors|striptags }}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+
+    <!-- Separate link to update username & password -->
+    <div class="mt-4 text-end">
+        <a href="{% url 'staff:patient_credentials_update' patient.id %}" class="btn btn-secondary">
+            Update Username & Password
+        </a>
+    </div>
+</div>
+{% endblock %}

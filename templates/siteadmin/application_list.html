@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block adminpage %}
+<div class="container mt-4">
+    <h2 class="mb-4">Applications by Vacancy</h2>
+
+    {% for vacancy in vacancies %}
+        <h4 class="mt-5">{{ vacancy.title }}</h4>
+        {% if vacancy.application_set.all %}
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="table-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Applicant Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>CV</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for application in vacancy.application_set.all %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ application.applicant_name }}</td>
+                        <td>{{ application.email }}</td>
+                        <td>{{ application.phone_number }}</td>
+                        <td><a href="{{ application.cv.url }}" target="_blank">View CV</a></td>
+                        <td>
+                            <form action="{% url 'adminpanel:delete_application' application.id %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-sm btn-danger"
+                                        onclick="return confirm('Are you sure you want to delete this application?');">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-info">No applications yet for this vacancy.</div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}

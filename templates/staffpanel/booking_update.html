@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Appointment</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .form-control:disabled {
+            background-color: #e9ecef;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center">Edit Appointment</h2>
+    <form method="POST" action="{% url 'staff:booking_update' appointment.id %}">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="doctor">Doctor</label>
+            <input type="text" class="form-control" value="{{ doctor.name }}" readonly>
+        </div>
+        
+        <div class="form-group">
+            <label for="patient">Patient</label>
+            <input type="text" class="form-control" value="{{ patient.first_name }} {{ patient.last_name }}" readonly>
+        </div>
+        
+        <div class="form-group">
+            <label for="booking_date">Booking Date</label>
+            <input type="date" class="form-control" name="booking_date" id="booking_date" value="{{ formatted_date }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="slot_time">Slot Time</label>
+            <select name="slot_time" id="slot_time" class="form-control" required>
+                {% for slot in available_slots %}
+                    <option value="{{ slot.id }}" {% if appointment.slot_time == slot %}selected{% endif %}>{{ slot.start_time }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Update Appointment</button>
+    </form>
+
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script>
+    // JavaScript to handle date change and update available slots dynamically
+    document.getElementById('booking_date').addEventListener('change', function() {
+        var selectedDate = this.value;
+        var doctorId = "{{ doctor.id }}";
+        var selectedSlotId = "{{ appointment.slot_time.id }}";
+        
+        // Send an AJAX request to fetch available slots for the selected date
+        fetch("{% url 'adminpanel:get_available_slots' %}?doctor_id=" + doctorId + "&selected_date=" + selectedDate + "&selected_slot_id=" + selectedSlotId)
+            .then(response => response.json())
+            .then(data => {
+                if (data.slots) {
+                    var slotSelect = document.getElementById('slot_time');
+                    slotSelect.innerHTML = ''; // Clear current options
+
+                    // Add new options dynamically
+                    data.slots.forEach(function(slot) {
+                        var option = document.createElement('option');
+                        option.value = slot.id;
+                        option.textContent = slot.start_time;
+                        slotSelect.appendChild(option);
+                    });
+                } else {
+                    console.error('No slots available');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching slots:', error);
+            });
+    });
+</script>
+
+</body>
+</html>

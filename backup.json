@@ -1,0 +1,189 @@
+[
+    {
+        "model": "adminpanel.staffdepartment",
+        "pk": 1,
+        "fields": {
+            "name": "Reception"
+        }
+    },
+    {
+        "model": "adminpanel.staffdepartment",
+        "pk": 4,
+        "fields": {
+            "name": "lab"
+        }
+    },
+    {
+        "model": "adminpanel.staffdepartment",
+        "pk": 9,
+        "fields": {
+            "name": "Nurse"
+        }
+    },
+    {
+        "model": "adminpanel.staff",
+        "pk": 7,
+        "fields": {
+            "erp_id": "S1002",
+            "name": "nahsygfwieo",
+            "user": 15,
+            "email": "kchagsdcy@gmail.com",
+            "phone_number": "98776532355",
+            "department": 1,
+            "profile_picture": "staff_images/FullSizeRender.jpg"
+        }
+    },
+    {
+        "model": "adminpanel.staff",
+        "pk": 8,
+        "fields": {
+            "erp_id": "S1003",
+            "name": "nasbcjhzvj",
+            "user": 16,
+            "email": "dgasgfahj@gmai.com",
+            "phone_number": "7865987",
+            "department": 4,
+            "profile_picture": "staff_images/2845e11d-ec94-446a-a45e-e19828e8b0f3_2_LKnXE64.JPG"
+        }
+    },
+    {
+        "model": "adminpanel.staff",
+        "pk": 9,
+        "fields": {
+            "erp_id": "S1004",
+            "name": "fdkehjwb",
+            "user": 17,
+            "email": "hdacba@gmail.com",
+            "phone_number": "987866453",
+            "department": 1,
+            "profile_picture": "staff_images/FullSizeRender_3ZH6vma.jpg"
+        }
+    },
+    {
+        "model": "adminpanel.staff",
+        "pk": 10,
+        "fields": {
+            "erp_id": "S1005",
+            "name": "sdnfdksjbfksd",
+            "user": 20,
+            "email": "ghjc@gmail.com",
+            "phone_number": "987867643987",
+            "department": 1,
+            "profile_picture": "staff_images/2845e11d-ec94-446a-a45e-e19828e8b0f3_2_0X78ksE.JPG"
+        }
+    },
+    {
+        "model": "adminpanel.staff",
+        "pk": 11,
+        "fields": {
+            "erp_id": "S1006",
+            "name": "gdhjdag",
+            "user": 21,
+            "email": "cdhaufb@gmail.com",
+            "phone_number": "987765443",
+            "department": 1,
+            "profile_picture": "staff_images/IMG_4029.jpg"
+        }
+    },
+    {
+        "model": "adminpanel.staff",
+        "pk": 12,
+        "fields": {
+            "erp_id": "S1007",
+            "name": "hdashjfvhja",
+            "user": 22,
+            "email": "hsahgdaj@gmail.com",
+            "phone_number": "09876756543",
+            "department": 1,
+            "profile_picture": "staff_images/IMG_7511.jpg"
+        }
+    },
+    {
+        "model": "adminpanel.staff",
+        "pk": 15,
+        "fields": {
+            "erp_id": "S1008",
+            "name": "sbadgyjahsgd",
+            "user": 26,
+            "email": "kdgaugv@gmail.com",
+            "phone_number": "98776554353",
+            "department": 1,
+            "profile_picture": "staff_images/2845e11d-ec94-446a-a45e-e19828e8b0f3_2_plh0CVh.JPG"
+        }
+    },
+    {
+        "model": "adminpanel.doctordepartment",
+        "pk": 2,
+        "fields": {
+            "name": "General Medicine"
+        }
+    },
+    {
+        "model": "adminpanel.doctordepartment",
+        "pk": 3,
+        "fields": {
+            "name": "Ortho"
+        }
+    },
+    {
+        "model": "adminpanel.doctordepartment",
+        "pk": 4,
+        "fields": {
+            "name": "Gynecology"
+        }
+    },
+    {
+        "model": "adminpanel.doctor",
+        "pk": 2,
+        "fields": {
+            "erp_id": "D1001",
+            "name": "naheemudina",
+            "user": 12,
+            "email": "naheem@gmailc.com",
+            "phone_number": "98765432123",
+            "specialist_department": 3,
+            "medical_id": "987h867",
+            "consulting_hours_start": "10:00:00",
+            "consulting_hours_end": "17:00:00",
+            "profile_picture": "doctor_images/IMG_8178.jpg",
+            "off_days": "",
+            "slots": []
+        }
+    },
+    {
+        "model": "adminpanel.doctor",
+        "pk": 8,
+        "fields": {
+            "erp_id": "D1002",
+            "name": "niyasbcmna ",
+            "user": 30,
+            "email": "kjfhgdsjhfb@gmail.com",
+            "phone_number": "8736472829",
+            "specialist_department": 2,
+            "medical_id": "hjh6757",
+            "consulting_hours_start": "21:23:00",
+            "consulting_hours_end": "05:23:00",
+            "profile_picture": "doctor_images/IMG_3084_lIA2dcK.JPG",
+            "off_days": "Thu",
+            "slots": []
+        }
+    },
+    {
+        "model": "adminpanel.doctor",
+        "pk": 10,
+        "fields": {
+            "erp_id": "D1003",
+            "name": "nhhdsgfyags",
+            "user": 33,
+            "email": "hdgafhjf@gmail.com",
+            "phone_number": "8765458798",
+            "specialist_department": 3,
+            "medical_id": "DFR887656",
+            "consulting_hours_start": "07:00:00",
+            "consulting_hours_end": "15:00:00",
+            "profile_picture": "doctor_images/IMG_9476.jpg",
+            "off_days": "Sat",
+            "slots": []
+        }
+    }
+]

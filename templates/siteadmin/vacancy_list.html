@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block adminpage %}
+<div class="container mt-5">
+    <h2>All Vacancies</h2>
+    <a href="{% url 'adminpanel:create_vacancy' %}" class="btn btn-primary mb-3">+ Create Vacancy</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Department</th>
+                <th>Description</th>
+                <th>Salary</th>
+                <th>qualifications</th>
+                <th>Experience</th>
+                <th>created_at</th>
+                <th>Deadline</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vacancy in vacancies %}
+            <tr>
+                <td>{{ vacancy.title }}</td>
+                <td>{{ vacancy.department }}</td>
+                <td>{{ vacancy.description }}</td>
+                <td>{{ vacancy.salary_range }}</td>
+                <td>{{ vacancy.qualifications }}</td>
+                <td>{{ vacancy.experience }}</td>
+                <td>{{ vacancy.created_at }}</td>
+                <td>{{ vacancy.application_deadline }}</td>
+                <td>
+                    {% if vacancy.is_active %}
+                        <span class="badge bg-success">Active</span>
+                    {% else %}
+                        <span class="badge bg-danger">Closed</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'adminpanel:edit_vacancy' vacancy.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'adminpanel:delete_vacancy' vacancy.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="5" class="text-center">No vacancies available.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

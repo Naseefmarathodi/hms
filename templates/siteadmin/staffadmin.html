@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+
+{% block content %}
+
+<td>
+    <a href="{% url 'adminpanel:staff_detail' staff.erp_id %}" class="btn btn-info btn-sm">View</a>
+    <a href="{% url 'adminpanel:staff_update' staff.erp_id %}" class="btn btn-warning btn-sm">Edit</a>
+    <a href="{% url 'adminpanel:staff_delete' staff.erp_id %}" class="btn btn-danger btn-sm">Delete</a>
+</td>
+
+{% endblock %}
+

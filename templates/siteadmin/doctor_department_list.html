@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block adminpage %}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Doctor Departments</h2>
+
+    <!-- Add Department Button -->
+    <div class="mb-3 text-end">
+        <a href="{% url 'adminpanel:add_doctor_department' %}" class="btn btn-primary">
+            <i class="fa fa-plus-circle"></i> Create New Department
+        </a>
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>#</th>
+                <th><i class="fa fa-hospital-o"></i> Name</th>
+                <th><i class="fa fa-cogs"></i> Actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for department in departments %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ department.name }}</td>
+                <td>
+                    <a href="{% url 'adminpanel:update_doctor_department' department.id %}" class="btn btn-sm btn-warning">
+                        <i class="fa fa-edit"></i> Edit
+                    </a>
+                    <a href="{% url 'adminpanel:delete_doctor_department' department.id %}" class="btn btn-sm btn-danger"
+                       onclick="return confirm('Delete this department permanently?')">
+                        <i class="fa fa-trash"></i> Delete
+                    </a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center text-muted">
+                    <i class="fa fa-exclamation-circle"></i> No departments found. Please add one.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

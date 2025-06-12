@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block adminpage %}
+    <div class="container mt-5">
+        <h2>Patient List</h2>
+        <form method="GET" action="{% url 'adminpanel:patient_list' %}" class="d-flex justify-content-end">
+            <input type="text" name="q" class="form-control me-2" value="{{ query }}" placeholder="Search..." style="width: 200px;">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>MR No</th>
+                    <th>Name</th>
+                    <th>Date of birth</th>
+                    <th>Contact</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for patient in patients %}
+
+                <tr>
+                    
+                    
+
+                    <td>{{ patient.id }}</td>
+                    <td>{{ patient.mr_no }}</td>
+                    <td>{{ patient.first_name }} {{ patient.last_name }}</td>
+                    <td>{{ patient.date_of_birth }}</td>
+                    <td>{{ patient.phone_number }}<br>{{ patient.email }}</td>
+                    <td>
+                        <a href="{% url 'adminpanel:patient_detail' patient.mr_no %}" class="btn btn-sm btn-info">View</a>
+                        <a href="{% url 'adminpanel:patient_update' patient.mr_no %}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="{% url 'adminpanel:patient_delete' patient.mr_no %}" 
+                        class="btn btn-sm btn-danger" 
+                        onclick="return confirm('Are you sure you want to delete this patient?')">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endblock %}
+

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block adminpage %}
+
+<h1>Update Doctor Department</h1>
+
+{% if form.errors %}
+    <ul>
+        {% for field in form %}
+            {% for error in field.errors %}
+                <li>{{ field.label }}: {{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<!-- Department Form -->
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- Render form fields -->
+    <button type="submit">Update Department</button>
+</form>
+
+<br>
+<a href="{% url 'adminpanel:doctor_department_list' %}">Back to Department List</a>
+
+{% endblock %}

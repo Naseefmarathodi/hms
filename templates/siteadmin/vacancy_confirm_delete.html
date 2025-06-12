@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block adminpage %}
+<div class="container mt-5">
+    <h2>Confirm Deletion</h2>
+    <p>Are you sure you want to delete the vacancy: <strong>{{ object.title }}</strong>?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        <a href="{% url 'adminpanel:vacancy_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

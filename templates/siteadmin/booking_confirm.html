@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Appointment</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .error-message {
+            color: red;
+        }
+        .success-message {
+            color: green;
+        }
+        /* Popup Modal */
+        .popup {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+            margin: 20% auto;
+            box-shadow: 0px 0px 10px 0px black;
+        }
+        .close {
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center">Confirm Appointment</h2>
+
+    <!-- Display Success or Error Messages -->
+    {% if messages %}
+        <div class="alert">
+            {% for message in messages %}
+                <p class="{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}text-danger{% else %}text-success{% endif %}">
+                    {{ message }}
+                </p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Display Patient Details -->
+    {% if patient %}
+        <div class="card p-3 mb-3">
+            <h5>Patient Details</h5>
+            <p><strong>Name:</strong> {{ patient.first_name }} {{ patient.last_name }}</p>
+            <p><strong>Phone:</strong> {{ patient.phone_number }}</p>
+            <p><strong>Age:</strong> {{ patient.age }}</p>
+            <p><strong>Date of Birth:</strong> {{ patient.date_of_birth }}</p>
+            <p><strong>MR Number:</strong> {{ patient.mr_no }}</p>
+        </div>
+    {% else %}
+        <!-- Show Popup When Patient Not Found -->
+        <div id="errorPopup" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup()">&times;</span>
+                <p style="color: red;">Patient not found. Please register the patient first.</p>
+                <a href="{% url 'adminpanel:patient_registration' %}" class="btn btn-primary">Register New Patient</a>
+            </div>
+        </div>
+
+        <!-- Auto Open Popup -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                document.getElementById("errorPopup").style.display = "block";
+            });
+
+            function closePopup() {
+                document.getElementById("errorPopup").style.display = "none";
+            }
+        </script>
+    {% endif %}
+
+    <!-- Appointment Form -->
+    <form method="post">
+        {% csrf_token %}
+        
+        <input type="hidden" name="doctor" value="{{ doctor.id }}">
+        <input type="hidden" name="appointment_date" value="{{ selected_date }}">
+        <input type="hidden" name="phone" value="{{ patient.phone_number }}">
+
+        <!-- Doctor Information -->
+        <div class="mb-3">
+            <label for="doctor" class="form-label">Doctor:</label>
+            <input type="text" class="form-control" value="Dr. {{ doctor.name }}" readonly>
+        </div>
+
+        <!-- Selected Date -->
+        <div class="mb-3">
+            <label for="selected_date" class="form-label">Selected Date:</label>
+            <input type="text" class="form-control" value="{{ selected_date }}" readonly>
+        </div>
+
+        <!-- Available Time Slots -->
+        <div class="mb-3">
+            <label for="slot_time" class="form-label">Select Time Slot:</label>
+            <select name="slot_time" class="form-control" required>
+                {% if available_slots %}
+                    {% for slot in available_slots %}
+                        <option value="{{ slot.id }}">{{ slot.start_time|time:"g:i A" }}</option>
+                    {% endfor %}
+                {% else %}
+                    <option value="" disabled>No available slots</option>
+                {% endif %}
+            </select>
+        
+            {% if form.slot_time.errors %}
+                <div class="error-message text-danger">
+                    {% for error in form.slot_time.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary w-100">Book Appointment</button>
+    </form>
+
+    <!-- Back Button -->
+    <a href="{% url 'adminpanel:book_appointment' %}" class="btn btn-secondary w-100 mt-3">Back</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends 'staffbase.html' %}
+{% block staffpage %}
+
+<div class="container mt-4">
+    <h4>Select Patient (Multiple patients found for this number)</h4>
+    <form method="get" action="{% url 'staff:confirm_appointment' %}">
+    <input type="hidden" name="doctor" value="{{ doctor.id }}">
+    <input type="hidden" name="date" value="{{ selected_date }}">
+    <input type="hidden" name="phone" value="{{ phone_number }}">
+    {% for patient in patients %}
+        <label>
+            <input type="radio" name="patient_id" value="{{ patient.id }}" required>
+            {{ patient.first_name }} {{ patient.last_name }} - MR: {{ patient.mr_no }}
+        </label><br>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary mt-3">Continue</button>
+</form>
+    <a href="{% url 'staff:book_appointment' %}" class="btn btn-secondary mt-3">Back</a>
+</div>
+{% endblock %}

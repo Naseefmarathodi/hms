@@ -1,0 +1,41 @@
+{% extends 'doctorbase.html' %}
+
+{% block doctorpage %}
+<div class="container mt-5">
+    <h2 class="text-center">My Appointments</h2>
+    <table class="table table-bordered mt-4">
+        <thead class="thead-dark">
+            <tr>
+                <th>Date</th>
+                <th>Time Slot</th>
+                <th>Patient Name</th>
+                <th>MR Number</th>
+                <th>Date of birth (Age)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.booking_date }}</td>
+                <td>{{ booking.slot_time.start_time|date:"h:i A" }} - {{ booking.slot_time.end_time|date:"h:i A" }}</td>
+                <td>{{ booking.patient.first_name }}</td>
+                <td>{{ booking.patient.mr_no }}</td>
+                <td>
+                    {{ booking.patient.date_of_birth }} 
+                    ({{ booking.patient_age }} years)
+                    </td>
+
+                <td><a href="{% url 'doctor:add_or_edit_visit' booking.id %}" class="btn btn-primary btn-sm">Visit Form</a>
+</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="text-center">No bookings found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}  
+              

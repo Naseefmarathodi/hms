@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block adminpage %}
+
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Our Doctors</h2>
+        <div class="row mb-4">
+            <div class="col-md-6 col-sm-6">
+            </div>
+            <div class="col-md-6 col-sm-6 text-right">
+                <a href="{% url 'adminpanel:doctor_registration' %}" 
+                   class="btn btn-primary wow fadeInUp" 
+                   data-wow-delay="0.2s">Add New Doctor</a>
+            </div>
+        </div>
+        <form method="get" class="mb-3">
+    <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Search by ERP ID or Name" value="{{ query|default:'' }}">
+        <button class="btn btn-primary" type="submit">Search</button>
+    </div>
+</form>    
+        <div class="row">
+            {% for doctor in doctors %}
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="team-thumb wow fadeInUp card shadow-sm" data-wow-delay="0.{% cycle '2' '4' '6' %}s">
+                    <div class="card-body text-center">
+                        {% if doctor.profile_picture %}
+                        <img src="{{ doctor.profile_picture.url }}" 
+                             class="img-fluid rounded-circle mb-3" 
+                             alt="Dr. {{ doctor.name }}"
+                             style="width: 150px; height: 250x; object-fit: cover;">
+                        {% else %}
+                        <div class="rounded-circle bg-secondary mb-3" 
+                             style="width: 150px; height: 150px; margin: 0 auto;">
+                            <i class="fa fa-user-md fa-3x text-light" style="line-height: 150px;"></i>
+                        </div>
+                        {% endif %}
+                        
+                        <h4>Dr. {{ doctor.name }}</h4>
+                        <p class="text-muted">{{ doctor.specialist_department.name }}</p>
+                        
+                        <div class="doctor-info">
+                            <p><i class="fa fa-id-card"></i> ERP ID: {{ doctor.erp_id }}</p>
+                            <p><i class="fa fa-phone"></i> {{ doctor.phone_number }}</p>
+                        </div>
+
+                        <div class="mt-3">
+                            <a href="{% url 'adminpanel:doctor_detail' doctor.erp_id %}" 
+                               class="btn btn-sm btn-info">View</a>
+                            <a href="{% url 'adminpanel:doctor_update' doctor.erp_id %}" 
+                               class="btn btn-sm btn-primary">Edit</a>
+                            <form action="{% url 'adminpanel:doctor_delete' doctor.erp_id %}" 
+                                  method="post" 
+                                  class="d-inline"
+                                  onsubmit="return confirm('Permanently delete this doctor record?')">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <div class="alert alert-info">
+                    No doctors found. 
+                    <a href="{% url 'adminpanel:doctor_registration' %}" class="alert-link">
+                        Register New Doctor
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+    </div>
+</section>
+
+{% endblock %}

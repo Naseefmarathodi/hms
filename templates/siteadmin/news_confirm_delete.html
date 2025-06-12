@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block adminpage %}
+<div class="container mt-5">
+    <h2>Delete News</h2>
+    <p>Are you sure you want to delete the news titled "<strong>{{ news.heading }}</strong>"?</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes, delete</button>
+        <a href="{% url 'adminpanel:news_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Appointment Details</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+
+<div class="container mt-4">
+    <h2>Appointment Details for {{ appointment.patient.first_name }} {{ appointment.patient.last_name }}</h2>
+    <p><strong>Doctor:</strong> {{ appointment.doctor.name }}</p>
+    <p><strong>MR Number:</strong> {{ appointment.patient.mr_no }}</p>
+    <p><strong>Phone Number:</strong> {{ appointment.patient.phone_number }}</p>
+    <p><strong>Appointment Date & Time:</strong> {{ appointment.booking_datetime|date:"d M Y, H:i A" }}</p>
+    <p><strong>Slot Time:</strong> {{ appointment.slot_time.start_time }}</p>
+
+    <a href="{% url 'adminpanel:appointment_list' %}" class="btn btn-primary">Back to Appointment List</a>
+</div>
+
+</body>
+</html>

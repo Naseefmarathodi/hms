@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block adminpage %}
+
+<div class="container mt-5">
+    <div class="row">
+        {% for item in news %}
+        <div class="col-md-4 col-sm-6 mb-4">
+            <!-- NEWS THUMB -->
+            <div class="news-thumb wow fadeInUp" data-wow-delay="0.4s">
+                <img src="{{ item.photo.url }}" class="img-fluid" style="width:100%; max-width:350px; height:233px; object-fit:cover;" alt="News Image">
+                <div class="news-info">
+                    <span>{{ item.created_at }}</span>
+                    <h3><a href="#">{{ item.heading }}</a></h3>
+                    <p>{{ item.description|truncatewords:20 }}</p>
+                    <div class="author">
+                        {% if item.Creater_photo %}
+                            <img src="{{ item.Creater_photo.url }}" class="img-responsive" alt="Creator">
+                        {% else %}
+                            <img src="{% static 'images/default-author.jpg' %}" class="img-responsive" alt="Default Creator">
+                        {% endif %}
+                        <div class="author-info">
+                            <h5>{{ item.created_by }}</h5>
+                       <p>{{ item.designation}}</p>
+                      <p> <a href="{% url 'adminpanel:edit_news' item.id %}" class="btn btn-primary">Edit</a>
+                          <a href="{% url 'adminpanel:delete_news' item.id %}" class="btn btn-danger">Delete</a>   </p>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                        
+        {% empty %}
+        <div class="col-12 text-center">
+            <p>No news entries available.</p>
+        </div>
+        {% endfor %}
+        
+
+    </div>
+</div>
+
+{% endblock %}

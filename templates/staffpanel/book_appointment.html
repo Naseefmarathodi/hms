@@ -1,0 +1,73 @@
+{% extends 'staffbase.html' %}
+    {% block staffpage %}
+
+
+    <h2>Book an Appointment</h2>
+    
+    <!-- Display Messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    
+    <form method="POST" action="{% url 'staff:book_appointment' %}">
+        {% csrf_token %}
+    
+        <!-- Select Doctor -->
+        <label for="doctor">Select Doctor:</label>
+        <select name="doctor" id="doctor" required>
+            <option value="">-- Select Doctor --</option>
+            {% for doc in doctors %}
+                <option value="{{ doc.id }}" {% if doctor and doctor.id == doc.id %}selected{% endif %}>
+                    Dr. {{ doc.name }}
+                </option>
+            {% endfor %}
+        </select>
+    
+        <!-- Select Date -->
+        <label for="appointment_date">Select Date:</label>
+        <input type="date" name="appointment_date" id="appointment_date" required>
+    
+        <button type="submit">Check Availability</button>
+    </form>
+    
+    {% if doctor %}
+        <h3>Available Slots for Dr. {{ doctor.name }} on {{ selected_date }}</h3>
+    
+        {% if not is_doctor_available %}
+            <p style="color: red;">Doctor is not available on this day.</p>
+        {% elif available_slots %}
+            <ul>
+                {% for slot in available_slots %}
+                    <li>{{ slot }}</li>
+                {% endfor %}
+            </ul>
+
+
+            <p>Select a patient to proceed with booking.</p>
+            <form method="GET" action="{% url 'staff:confirm_appointment' %}">
+                <input type="hidden" name="doctor" value="{{ doctor.id }}">
+                <input type="hidden" name="date" value="{{ selected_date }}">
+    
+                <label for="phone">Enter Patient Phone Number:</label>
+                <input type="text" name="phone" id="phone" required>
+    
+                <button type="submit">Proceed to Booking</button>
+            </form>
+
+            {% if patient_not_found %}
+            <div class="alert alert-warning">
+                <strong>Warning:</strong> Patient not registered.
+                <a href="{{ register_url }}" class="btn btn-sm btn-primary">Register New Patient</a>
+            </div>
+        {% endif %}
+
+
+
+        {% else %}
+            <p style="color: red;">No available slots for this doctor on the selected day.</p>
+        {% endif %}
+    {% endif %}
+
+    {% endblock %}

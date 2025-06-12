@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block adminpage %}
+    <div class="container mt-4">
+        <h2>Patient Details</h2>
+        <div class="card p-3">
+            <p><strong>MR No:</strong> {{ patient.mr_no }}</p>
+            <p><strong>Full Name:</strong> {{ patient.first_name }} {{ patient.last_name }}</p>
+            <p><strong>Date of Birth:</strong> {{ patient.date_of_birth }}</p>
+            <p><strong>Gender:</strong> {{ patient.get_gender_display }}</p>
+            <p><strong>Phone Number:</strong> {{ patient.phone_number }}</p>
+            <p><strong>Email:</strong> {{ patient.email }}</p>
+            <p><strong>Address:</strong> {{ patient.address }}</p>
+            <p><strong>Previous Hospital History:</strong> {{ patient.previous_hospital_history }}</p>
+            {% if patient.medical_report_pdf %}
+            <p><strong>Medical Report:</strong> <a href="{{ patient.medical_report_pdf.url }}" target="_blank">Download</a></p>
+            {% endif %}
+            {% if patient.profile_image %}
+            <p><strong>Profile Image:</strong></p>
+            <img src="{{ patient.profile_image.url }}" alt="Profile Image" class="img-thumbnail" width="150">
+            {% endif %}
+            <br>
+            <a href="{% url 'adminpanel:patient_update' patient.mr_no %}" class="btn btn-warning">Edit</a>
+            <a href="{% url 'adminpanel:patient_delete' patient.mr_no %}" class="btn btn-danger"
+               onclick="return confirm('Are you sure you want to delete this patient?');">Delete</a>
+            <a href="{% url 'adminpanel:patient_list' %}" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+    {% endblock %}
+

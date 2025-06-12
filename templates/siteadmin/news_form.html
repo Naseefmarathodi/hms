@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block adminpage %}
+<div class="container mt-5">
+    <div class="card shadow-lg rounded">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Create News</h4>
+        </div>
+        <div class="card-body">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <div class="mb-3">
+                    <label for="id_heading" class="form-label">Heading</label>
+                    <input type="text" class="form-control" name="heading" id="id_heading" value="{{ form.heading.value|default:'' }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_description" class="form-label">Description</label>
+                    {{ form.description }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_photo" class="form-label">News Image</label>
+                    <input type="file" class="form-control" name="photo" id="id_photo">
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_created_at" class="form-label">Date</label>
+                    <input type="date" class="form-control" name="created_at" id="id_created_at" value="{{ form.created_at.value|default:'' }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_created_by" class="form-label">Created By</label>
+                    <input type="text" class="form-control" name="created_by" id="id_created_by" value="{{ form.created_by.value|default:'' }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="id_Creater_photo" class="form-label">Creater_photo</label>
+                    <input type="file" class="form-control" name="Creater_photo" id="id_Creater_photo" value="{{ form.Creater_photo.value|default:'' }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="id_designation" class="form-label">designation</label>
+                    <input type="text" class="form-control" name="designation" id="id_designation" value="{{ form.designation.value|default:'' }}" required>
+                </div>
+
+                <div class="text-end">
+                    <button type="submit" class="btn btn-success">Submit News</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

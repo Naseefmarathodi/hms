@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block adminpage %}
+<div class="container mt-5">
+    <h4>Update Doctor: Dr. {{ doctor.name }}</h4>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Update Doctor</button>
+        <a href="{% url 'adminpanel:doctor_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+
+    <div class="mt-4">
+        <h5>Credentials</h5>
+        <a href="{% url 'adminpanel:update_doctor_credentials' doctor.erp_id %}" class="btn btn-outline-primary">
+            Update Username & Password
+        </a>
+    </div>
+
+    <div class="mt-4">
+        <h5>Off Days</h5>
+        <div class="badge-container">
+            {% if off_days %}
+                {% for day in off_days %}
+                    <span class="badge bg-warning text-dark">{{ day }}</span>
+                {% endfor %}
+            {% else %}
+                <span class="text-muted">No scheduled off days</span>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

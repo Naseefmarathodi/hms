@@ -1,0 +1,46 @@
+{% extends 'doctorbase.html' %}
+{% block doctorpage %}
+
+<h2>Completed Patient Visits</h2>
+
+<form method="get" class="mb-3">
+  <div class="input-group">
+    <input type="text" name="phone" value="{{ phone }}" class="form-control" placeholder="Enter patient phone number">
+    <button type="submit" class="btn btn-primary">Search</button>
+  </div>
+</form>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+        <th>Mr. No</th>
+      <th>Patient</th>
+      <th>phone_number</th>
+      <th>Doctor</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for visit in completed_visits %}
+    <tr>
+      <td>{{ visit.id }}</td>
+        <td>{{ visit.patient.mr_no }}</td>
+      <td>{{ visit.patient.first_name }} {{ visit.patient.last_name }}</td>
+        <td>{{ visit.patient.phone_number }}</td>
+      <td>{{ visit.doctor.name }}</td>
+      <td>{{ visit.visit_date }}</td>
+        <td>
+            <a href="{% url 'doctor:view_completed_visit' visit.id %}" class="btn btn-info btn-sm">View</a>
+        </td>
+        <td>
+            <a href="{% url 'doctor:edit_completed_visit' visit.id %}" class="btn btn-success btn-sm">Edit Visit</a> 
+        </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="4">No completed visits found.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

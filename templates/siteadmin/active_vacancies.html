@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block adminpage %}
+<div class="container mt-4">
+    <h2>Available Vacancies</h2>
+    <ul class="list-group mt-3">
+        {% for vacancy in vacancies %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ vacancy.title }}
+            <a href="{% url 'adminpanel:apply_to_vacancy' vacancy.id %}" class="btn btn-primary btn-sm">Apply</a>
+        </li>
+        {% empty %}
+        <li class="list-group-item">No active vacancies available.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "doctorbase.html" %}
+
+{% block doctorpage %}
+<div class="container mt-5">
+    <div class="alert alert-danger text-center" role="alert">
+        <h4 class="alert-heading">Access Denied</h4>
+        <p>{{ message }}</p>
+        <hr>
+        <a href="{% url 'doctor:doctor_bookings' %}" class="btn btn-primary mt-3">Back to Booking List</a>
+    </div>
+</div>
+{% endblock %}

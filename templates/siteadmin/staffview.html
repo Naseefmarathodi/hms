@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block adminpage %}
+
+<!-- Staff Profile Section -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Staff Details</h2>
+        <div class="row">
+            <!-- Left Column - Profile Card -->
+            <div class="col-md-4 col-sm-6">
+                <div class="team-thumb wow fadeInUp card shadow-sm" data-wow-delay="0.4s">
+                    {% if staff.profile_picture %}
+                    <img src="{{ staff.profile_picture.url }}" 
+                         class="img-responsive rounded-circle" 
+                         alt="{{ staff.name }}"
+                         style="width: 150px; height: 250px; object-fit: cover; margin: 0 auto;">
+                    {% else %}
+                    <div class="text-center py-5">
+                        <i class="fa fa-user-circle fa-5x text-muted"></i>
+                    </div>
+                    {% endif %}
+                    <div class="team-info card-body text-center">
+                        <h3>{{ staff.name }}</h3>
+                        <p class="text-muted">{{ staff.department.name }}</p>
+                        <div class="team-contact-info">
+                            <p><i class="fa fa-phone"></i> {{ staff.phone_number }}</p>
+                            <p><i class="fa fa-envelope"></i> <a href="mailto:{{ staff.email }}">{{ staff.email }}</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Details Card -->
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="mb-4">Professional Information</h5>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Department:</label>
+                                    <p class="form-control-plaintext">{{ staff.department.name }}</p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="font-weight-bold">ERP ID:</label>
+                                    <p class="form-control-plaintext">
+                                        {{ staff.erp_id|default:"-" }}
+                                    </p>
+                                </div>
+                            </div>
+
+                        <hr class="my-4">
+
+
+                        <div class="mt-4 text-right">
+                            <a href="{% url 'adminpanel:staff_list' %}" class="btn btn-secondary">
+                                <i class="fa fa-arrow-left"></i> Back to List
+                            </a>
+                            <a href="{% url 'adminpanel:staff_update' staff.erp_id %}" class="btn btn-primary">
+                                <i class="fa fa-edit"></i> Edit Profile
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

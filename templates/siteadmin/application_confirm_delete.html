@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block adminpage %}
+<div class="container mt-5">
+    <h2>Confirm Delete Application</h2>
+    <p>Are you sure you want to delete the application for {{ application.applicant_name }}?</p>
+    <form method="POST" action="{% url 'adminpanel:application_delete' application.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{% url 'adminpanel:application_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

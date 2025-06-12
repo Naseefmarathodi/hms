@@ -1,0 +1,46 @@
+### Django ###
+
+*.pyc
+*.DS_Store
+**/__pycache__/**
+*.log
+
+# Migrations
+**/migrations/
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
+
+# Database
+db.sqlite3
+db.sqlite3-journal
+
+# Ignore media with out static folder
+media/*
+!media/static
+
+# Ignore files in the "static" directory with a question mark in their names
+# static/*\?*
+
+# Settings files
+*.ini
+
+
+# Git
+.git_credentials
+gitpush
+
+# VsCode
+.vscode
+
+# Environment
+.env
+venv
+env
+.venv
+
+# Docker
+**/.dockerignore
+**/docker-compose*
+**/compose*
+**/Dockerfile*

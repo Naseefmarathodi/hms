@@ -1,0 +1,12 @@
+{% extends 'staffbase.html' %}
+{% block staffpage %}
+    <div class="container mt-4 text-center">
+        <h2>Confirm Delete</h2>
+        <p>Are you sure you want to delete patient <strong>{{ patient.first_name }} {{ patient.last_name }}</strong> (MR No: {{ patient.mr_no }})?</p>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a href="{% url 'staff:patient_list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+    {% endblock %}

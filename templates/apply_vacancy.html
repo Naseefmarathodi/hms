@@ -1,0 +1,18 @@
+{% extends 'careerbase.html' %}
+{% block careerbase %}
+<div class="container mt-4">
+    <h2>Apply for {{ vacancy.title }}</h2>
+
+    <div class="mb-3">
+        <strong>Department:</strong> {{ vacancy.department }}<br>
+        <strong>Deadline:</strong> {{ vacancy.application_deadline }}
+    </div>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Submit Application</button>
+        <a href="{% url 'active_vacancy_list' %}" class="btn btn-secondary">Back to Vacancies</a>
+    </form>
+</div>
+{% endblock %}

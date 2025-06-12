@@ -1,0 +1,68 @@
+{% extends 'doctorbase.html' %}
+{% block doctorpage %}
+<h2>Completed Visit Details</h2>
+
+<table class="table table-bordered">
+  <tr>
+    <th>Visit ID</th>
+    <td>{{ visit.id }}</td>
+  </tr>
+    <tr>
+        <th>MR Number</th>
+        <td>{{ visit.patient.mr_no }}</td>
+  <tr>
+    <th>Patient</th>
+    <td>{{ visit.patient.first_name }} {{ visit.patient.last_name }}</td>
+  </tr>
+  <tr>
+    <th>Doctor</th>
+    <td>{{ visit.doctor.name }}</td>
+  </tr>
+
+  <tr>
+    <th>Visit Date</th>
+    <td>{{ visit.visit_date }}</td>
+  </tr>
+  <tr>
+    <th>Next Visit Date</th>
+    <td>{{ visit.next_visit_date }}</td>
+  </tr>
+  <tr>
+    <th>Visit Completed</th>
+    <td>{{ visit.visit_completed }}</td>
+  </tr>
+    <tr>
+    <th>Symptoms  </th>
+    <td>{{ visit.symptoms }}</td>
+    </tr>
+    <tr>
+        <th>lab tests</th>
+        <td>{{ visit.lab_tests }}</td>
+
+    <tr>
+        <th>Scanning results</th>
+        <td>{{ visit.scanning_results }}</td>
+  </tr>
+    <tr?>
+        <th>Prescribed medicines</th>
+        <td>{{ visit.prescribed_medicines }}</td>
+  </tr>
+
+    <tr>
+        <th>Next visit date</th>
+        <td>{{ visit.next_visit_date }}</td>    
+  </tr>
+  <tr>
+    <th>PDF</th>
+    <td>
+      {% if visit.scanning_pdf %}
+        <a href="{{ visit.scanning_pdf.url }}" class="btn btn-sm btn-success" target="_blank">View</a>
+        <a href="{{ visit.scanning_pdf.url }}" download class="btn btn-sm btn-primary">Download</a>
+      {% else %}
+        No file uploaded.
+      {% endif %}
+    </td>
+  </tr>
+</table>
+<a href="{% url 'doctor:completed_visits' %}" class="btn btn-secondary">Back to List</a>
+{% endblock %}

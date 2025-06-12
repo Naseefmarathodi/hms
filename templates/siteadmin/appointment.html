@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+    {% block adminpage %}
+
+    <form method="POST">
+        {% csrf_token %}
+        {% if messages %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        
+        <!-- Select Doctor -->
+        <label for="doctor">Doctor:</label>
+        <select name="doctor" id="doctor" class="form-control">
+            {% for doc in doctors %}
+                <option value="{{ doc.id }}" {% if doc.id == doctor.id %}selected{% endif %}>{{ doc.name }}</option>
+            {% endfor %}
+        </select>
+    
+        <!-- Select Date -->
+        <label for="appointment_date">Select Appointment Date:</label>
+        <input type="date" name="appointment_date" id="appointment_date" class="form-control" 
+               value="{{ request.POST.appointment_date|default:selected_date }}" 
+               min="{{ today_date }}" required>
+    
+        <button type="submit" class="custom-btn">Check Available Slots</button>
+    </form>
+    
+    {% if available_slots %}
+        <h3>Available Slots for Dr. {{ doctor.name }} on {{ selected_date }}</h3>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="doctor" value="{{ doctor.id }}">
+            <input type="hidden" name="appointment_date" value="{{ selected_date }}">
+    
+            <!-- Select Slot -->
+            <label for="slot_time">Select Slot:</label>
+            <select name="slot_time" class="form-control">
+                {% for slot in available_slots %}
+                    <option value="{{ slot }}" {% if slot == request.POST.slot_time %}selected{% endif %}>{{ slot }}</option>
+                {% endfor %}
+            </select>
+    
+            <!-- Patient Identifier -->
+            <label for="phone_number">Enter Phone Number:</label>
+            <input type="text" id="phone_number" name="phone_number" onkeyup="searchPatient()" class="form-control">
+    
+            <!-- Patient Selection -->
+            <label for="patient_name">Select Patient:</label>
+            <select id="patient_name" name="patient_id" class="form-control">
+                <option value="">-- Select Patient --</option>
+            </select>
+    
+            <button type="submit" class="custom-btn">Book Appointment</button>
+        </form>
+    {% endif %}
+
+<script>
+    function searchPatient() {
+        let phoneNumber = document.getElementById("phone_number").value;
+        if (phoneNumber.length > 2) { // Trigger search only if 3+ characters are entered
+            fetch("{% url 'adminpanel:get_patients_by_phone' %}?phone_number=" + phoneNumber)
+                .then(response => response.json())
+                .then(data => {
+                    let patientDropdown = document.getElementById("patient_name");
+                    patientDropdown.innerHTML = '<option value="">-- Select Patient --</option>';
+                    
+                    data.patients.forEach(patient => {
+                        let option = document.createElement("option");
+                        option.value = patient.mr_no;
+                        option.textContent = patient.first_name + " " + patient.last_name;
+                        patientDropdown.appendChild(option);
+                    });
+                })
+                .catch(error => console.error("Error fetching patient data:", error));
+        }
+    }
+</script>
+
+    {% endblock %}

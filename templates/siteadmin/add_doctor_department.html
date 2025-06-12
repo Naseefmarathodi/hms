@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+    {% block adminpage %}
+
+    <h3>Add Doctor Department</h3>
+    
+    <!-- Display form errors if any -->
+    {% if form.errors %}
+        <ul>
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li>{{ field.label }}: {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Department Form -->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Render form fields -->
+        <button type="submit">Save Department</button>
+    </form>
+    
+    <br>
+    <a href="{% url 'adminpanel:doctor_department_list' %}">Back to Department List</a>
+
+    {% endblock %}
+
+    </body>
+    </html>

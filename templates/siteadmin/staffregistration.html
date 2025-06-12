@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block adminpage %}
+
+
+    <div class="container mt-5">
+        <h4 class="mb-4">Staff Registration Form</h4>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+    
+            <!-- Name -->
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Enter full name" required>
+            </div>
+    
+            <!-- Username -->
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Enter username" required>
+            </div>
+    
+            <!-- Password -->
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Enter password" required>
+            </div>
+    
+            <!-- Confirm Password -->
+            <div class="mb-3">
+                <label for="confirm_password" class="form-label">Confirm Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Confirm password" required>
+            </div>
+    
+            <!-- Email -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Enter email address">
+            </div>
+    
+            <!-- Phone Number -->
+            <div class="mb-3">
+                <label for="phone_number" class="form-label">Phone Number</label>
+                <input type="text" id="phone_number" name="phone_number" class="form-control" placeholder="Enter phone number">
+            </div>
+    
+            <!-- Department -->
+            <div class="mb-3">
+                <label for="department" class="form-label">Department</label>
+                <select id="department" name="department" class="form-select" required>
+                    <option value="" selected>--- Select Department ---</option>
+                    {% for department in departments %}
+                        <option value="{{ department.id }}">{{ department.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+    
+            <!-- Profile Picture -->
+            <div class="mb-3">
+                <label for="profile_picture" class="form-label">Profile Picture</label>
+                <input type="file" id="profile_picture" name="profile_picture" class="form-control">
+            </div>
+    
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+
+        {% if messages %}
+    <div class="alert alert-danger" role="alert">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+    </div>
+
+
+{% endblock %}

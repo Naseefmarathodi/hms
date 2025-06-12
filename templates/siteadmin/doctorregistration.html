@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+    {% block adminpage %}
+        {% csrf_token %}
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card shadow-lg">
+                        <div class="card-body">
+                            <h3 class="card-title text-center mb-4">Register a New Doctor</h3>
+                            
+                           <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button type="submit" class="btn btn-primary">Register Doctor</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <a href="{% url 'adminpanel:doctor_list' %}" class="btn btn-secondary mt-3">Back to Doctor List</a>
+    
+    {% endblock %}
+ 

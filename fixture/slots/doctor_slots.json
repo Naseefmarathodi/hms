@@ -1,0 +1,770 @@
+[
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 1,
+        "fields": {
+            "start_time": "00:00",
+            "end_time": "00:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 2,
+        "fields": {
+            "start_time": "00:15",
+            "end_time": "00:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 3,
+        "fields": {
+            "start_time": "00:30",
+            "end_time": "00:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 4,
+        "fields": {
+            "start_time": "00:45",
+            "end_time": "01:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 5,
+        "fields": {
+            "start_time": "01:00",
+            "end_time": "01:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 6,
+        "fields": {
+            "start_time": "01:15",
+            "end_time": "01:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 7,
+        "fields": {
+            "start_time": "01:30",
+            "end_time": "01:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 8,
+        "fields": {
+            "start_time": "01:45",
+            "end_time": "02:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 9,
+        "fields": {
+            "start_time": "02:00",
+            "end_time": "02:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 10,
+        "fields": {
+            "start_time": "02:15",
+            "end_time": "02:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 11,
+        "fields": {
+            "start_time": "02:30",
+            "end_time": "02:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 12,
+        "fields": {
+            "start_time": "02:45",
+            "end_time": "03:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 13,
+        "fields": {
+            "start_time": "03:00",
+            "end_time": "03:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 14,
+        "fields": {
+            "start_time": "03:15",
+            "end_time": "03:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 15,
+        "fields": {
+            "start_time": "03:30",
+            "end_time": "03:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 16,
+        "fields": {
+            "start_time": "03:45",
+            "end_time": "04:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 17,
+        "fields": {
+            "start_time": "04:00",
+            "end_time": "04:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 18,
+        "fields": {
+            "start_time": "04:15",
+            "end_time": "04:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 19,
+        "fields": {
+            "start_time": "04:30",
+            "end_time": "04:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 20,
+        "fields": {
+            "start_time": "04:45",
+            "end_time": "05:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 21,
+        "fields": {
+            "start_time": "05:00",
+            "end_time": "05:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 22,
+        "fields": {
+            "start_time": "05:15",
+            "end_time": "05:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 23,
+        "fields": {
+            "start_time": "05:30",
+            "end_time": "05:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 24,
+        "fields": {
+            "start_time": "05:45",
+            "end_time": "06:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 25,
+        "fields": {
+            "start_time": "06:00",
+            "end_time": "06:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 26,
+        "fields": {
+            "start_time": "06:15",
+            "end_time": "06:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 27,
+        "fields": {
+            "start_time": "06:30",
+            "end_time": "06:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 28,
+        "fields": {
+            "start_time": "06:45",
+            "end_time": "07:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 29,
+        "fields": {
+            "start_time": "07:00",
+            "end_time": "07:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 30,
+        "fields": {
+            "start_time": "07:15",
+            "end_time": "07:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 31,
+        "fields": {
+            "start_time": "07:30",
+            "end_time": "07:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 32,
+        "fields": {
+            "start_time": "07:45",
+            "end_time": "08:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 33,
+        "fields": {
+            "start_time": "08:00",
+            "end_time": "08:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 34,
+        "fields": {
+            "start_time": "08:15",
+            "end_time": "08:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 35,
+        "fields": {
+            "start_time": "08:30",
+            "end_time": "08:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 36,
+        "fields": {
+            "start_time": "08:45",
+            "end_time": "09:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 37,
+        "fields": {
+            "start_time": "09:00",
+            "end_time": "09:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 38,
+        "fields": {
+            "start_time": "09:15",
+            "end_time": "09:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 39,
+        "fields": {
+            "start_time": "09:30",
+            "end_time": "09:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 40,
+        "fields": {
+            "start_time": "09:45",
+            "end_time": "10:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 41,
+        "fields": {
+            "start_time": "10:00",
+            "end_time": "10:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 42,
+        "fields": {
+            "start_time": "10:15",
+            "end_time": "10:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 43,
+        "fields": {
+            "start_time": "10:30",
+            "end_time": "10:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 44,
+        "fields": {
+            "start_time": "10:45",
+            "end_time": "11:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 45,
+        "fields": {
+            "start_time": "11:00",
+            "end_time": "11:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 46,
+        "fields": {
+            "start_time": "11:15",
+            "end_time": "11:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 47,
+        "fields": {
+            "start_time": "11:30",
+            "end_time": "11:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 48,
+        "fields": {
+            "start_time": "11:45",
+            "end_time": "12:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 49,
+        "fields": {
+            "start_time": "12:00",
+            "end_time": "12:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 50,
+        "fields": {
+            "start_time": "12:15",
+            "end_time": "12:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 51,
+        "fields": {
+            "start_time": "12:30",
+            "end_time": "12:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 52,
+        "fields": {
+            "start_time": "12:45",
+            "end_time": "13:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 53,
+        "fields": {
+            "start_time": "13:00",
+            "end_time": "13:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 54,
+        "fields": {
+            "start_time": "13:15",
+            "end_time": "13:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 55,
+        "fields": {
+            "start_time": "13:30",
+            "end_time": "13:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 56,
+        "fields": {
+            "start_time": "13:45",
+            "end_time": "14:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 57,
+        "fields": {
+            "start_time": "14:00",
+            "end_time": "14:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 58,
+        "fields": {
+            "start_time": "14:15",
+            "end_time": "14:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 59,
+        "fields": {
+            "start_time": "14:30",
+            "end_time": "14:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 60,
+        "fields": {
+            "start_time": "14:45",
+            "end_time": "15:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 61,
+        "fields": {
+            "start_time": "15:00",
+            "end_time": "15:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 62,
+        "fields": {
+            "start_time": "15:15",
+            "end_time": "15:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 63,
+        "fields": {
+            "start_time": "15:30",
+            "end_time": "15:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 64,
+        "fields": {
+            "start_time": "15:45",
+            "end_time": "16:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 65,
+        "fields": {
+            "start_time": "16:00",
+            "end_time": "16:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 66,
+        "fields": {
+            "start_time": "16:15",
+            "end_time": "16:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 67,
+        "fields": {
+            "start_time": "16:30",
+            "end_time": "16:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 68,
+        "fields": {
+            "start_time": "16:45",
+            "end_time": "17:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 69,
+        "fields": {
+            "start_time": "17:00",
+            "end_time": "17:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 70,
+        "fields": {
+            "start_time": "17:15",
+            "end_time": "17:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 71,
+        "fields": {
+            "start_time": "17:30",
+            "end_time": "17:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 72,
+        "fields": {
+            "start_time": "17:45",
+            "end_time": "18:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 73,
+        "fields": {
+            "start_time": "18:00",
+            "end_time": "18:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 74,
+        "fields": {
+            "start_time": "18:15",
+            "end_time": "18:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 75,
+        "fields": {
+            "start_time": "18:30",
+            "end_time": "18:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 76,
+        "fields": {
+            "start_time": "18:45",
+            "end_time": "19:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 77,
+        "fields": {
+            "start_time": "19:00",
+            "end_time": "19:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 78,
+        "fields": {
+            "start_time": "19:15",
+            "end_time": "19:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 79,
+        "fields": {
+            "start_time": "19:30",
+            "end_time": "19:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 80,
+        "fields": {
+            "start_time": "19:45",
+            "end_time": "20:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 81,
+        "fields": {
+            "start_time": "20:00",
+            "end_time": "20:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 82,
+        "fields": {
+            "start_time": "20:15",
+            "end_time": "20:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 83,
+        "fields": {
+            "start_time": "20:30",
+            "end_time": "20:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 84,
+        "fields": {
+            "start_time": "20:45",
+            "end_time": "21:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 85,
+        "fields": {
+            "start_time": "21:00",
+            "end_time": "21:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 86,
+        "fields": {
+            "start_time": "21:15",
+            "end_time": "21:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 87,
+        "fields": {
+            "start_time": "21:30",
+            "end_time": "21:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 88,
+        "fields": {
+            "start_time": "21:45",
+            "end_time": "22:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 89,
+        "fields": {
+            "start_time": "22:00",
+            "end_time": "22:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 90,
+        "fields": {
+            "start_time": "22:15",
+            "end_time": "22:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 91,
+        "fields": {
+            "start_time": "22:30",
+            "end_time": "22:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 92,
+        "fields": {
+            "start_time": "22:45",
+            "end_time": "23:00"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 93,
+        "fields": {
+            "start_time": "23:00",
+            "end_time": "23:15"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 94,
+        "fields": {
+            "start_time": "23:15",
+            "end_time": "23:30"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 95,
+        "fields": {
+            "start_time": "23:30",
+            "end_time": "23:45"
+        }
+    },
+    {
+        "model": "adminpanel.doctorslot",
+        "pk": 96,
+        "fields": {
+            "start_time": "23:45",
+            "end_time": "00:00"
+        }
+    }
+]

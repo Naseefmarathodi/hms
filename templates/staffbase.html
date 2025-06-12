@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Staff home</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Tooplate">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <!-- Static CSS files -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/button.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dropdown.css' %}">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'css/tooplate-style.css' %}">
+</head>
+<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+
+    <!-- HEADER -->
+
+    <!-- MENU -->
+    <section class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container">
+
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+
+                <!-- lOGO TEXT HERE -->
+                <a href="{% url 'staff:staff_dashboard' %}" class="navbar-brand">
+                    <i class="fa fa-h-square"></i>ealth city
+                </a>
+                <span class="navbar-brand" style="margin-left: 10px;">Staff Panel</span>
+                <span class="navbar-brand" style="margin-right: 10px;">User {{ request.user.username }}</span>
+            </div>
+
+        </div>
+                   <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Patient Management</button>
+                            <div class="dropdown-content">
+                                  <form action="{% url 'staff:patient_list' %}" method="get" style="display:inline-block;">
+                                    <button type="submit" class="custom-btn">Patient List</button>
+                                </form>
+                            </br>
+
+                                <form action="{% url 'staff:patient_registration' %}" method="get" style="display:inline-block;">
+                                    <button type="submit" class="custom-btn"> Patient Registration</button>
+                                </form>
+                            </br>
+
+                            </div>
+                        </div></li>
+                                            <li><div class="dropdown">
+                        <button class="dropbtn">Appointments</button>
+                        <div class="dropdown-content">
+                            <form action="{% url 'staff:appointment_list' %}" method="get" style="display:inline-block;">
+                                <button type="submit" class="custom-btn">View Appointments</button>
+                            </form>
+                            <form action="{% url 'staff:book_appointment' %}" method="get" style="display:inline-block;">
+                                <button type="submit" class="custom-btn">Book Appointment</button>
+                            </form>
+                        </br>
+                    
+                        </div>
+                    
+                    </div></li>
+
+                    <li>
+                        <li class="appointment-btn"><a href="{% url 'staff:staff_logout' %}">Logout</a></li>
+                    
+                    
+                </div>
+
+
+    </section>
+
+       {% block staffpage %}{% endblock %}
+
+    <!-- SCRIPTS -->
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.sticky.js' %}"></script>
+    <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/smoothscroll.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+
+</body>
+</html>

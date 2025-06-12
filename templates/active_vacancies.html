@@ -1,0 +1,46 @@
+{% extends 'careerbase.html' %}
+{% block careerbase %}
+<div class="container mt-5">
+    <h2 class="mb-4">Available Vacancies</h2>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Title</th>
+                <th>Department</th>
+                <th>Description</th>
+                <th>Salary</th>
+                <th>Qualifications</th>
+                <th>Experience</th>
+                <th>Posted On</th>
+                <th>Deadline</th>
+                <th>Apply</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vacancy in vacancies %}
+            <tr>
+                <td>{{ vacancy.title }}</td>
+                <td>{{ vacancy.department }}</td>
+                <td>{{ vacancy.description }}</td>
+                <td>{{ vacancy.salary_range }}</td>
+                <td>{{ vacancy.qualifications }}</td>
+                <td>{{ vacancy.experience }}</td>
+                <td>{{ vacancy.created_at|date:"Y-m-d" }}</td>
+                <td>{{ vacancy.application_deadline }}</td>
+                <td>
+                    {% if vacancy.is_active %}
+                        <a href="{% url 'apply_to_vacancy' vacancy.id %}" class="btn btn-sm btn-primary">Apply</a>
+                    {% else %}
+                        <button class="btn btn-sm btn-secondary" disabled>Closed</button>
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="10" class="text-center">No active vacancies available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

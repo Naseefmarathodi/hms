@@ -1,0 +1,210 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Panel</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Tooplate">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <!-- Static CSS files -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/button.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dropdown.css' %}">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'css/tooplate-style.css' %}">
+</head>
+<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+
+
+
+    <!-- MENU -->
+    <section class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container">
+
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+
+                <a href="{% url 'adminpanel:adminpanelhome' %}" class="navbar-brand">
+                    <i class="fa fa-h-square"></i>ealth city
+                </a>
+                <span class="navbar-brand" style="margin-left: 10px;">Admin Panel</span>
+            </div>
+
+            <!-- MENU LINKS -->
+           <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Staff department</button>
+                            <div class="dropdown-content">
+                                <form action="{% url 'adminpanel:add_department' %}" method="get" style="display:inline-block;">
+                                    <button type="submit" class="custom-btn">Add Department</button>
+                                </form>
+                            </br>
+                                <form action="{% url 'adminpanel:department_list' %}" method="get" style="display:inline-block;">
+                                    <button type="submit" class="custom-btn">List Departments</button>
+                                </form>
+                            </div>
+                        </div></li>
+                    <li>    <div class="dropdown">
+                        <button class="dropbtn">Staff Registration</button>
+                        <div class="dropdown-content">
+                            <form action="{% url 'adminpanel:staff_registration' %}" method="get" style="display:inline-block;">
+                                <button type="submit" class="custom-btn">Add Staff</button>
+                            </form>
+                        </br>
+                            <form action="{% url 'adminpanel:staff_list' %}" method="get" style="display:inline-block;">
+                                <button type="submit" class="custom-btn">View All Staff</button>
+                            </form>
+                        </br>
+                        </div>
+                    </div></li>
+                    <li>    <div class="dropdown">
+                        <button class="dropbtn">Doctor Departments</button>
+                        <div class="dropdown-content">
+                            <form action="{% url 'adminpanel:add_doctor_department' %}" method="get" style="display:inline-block;">
+                                <button type="submit" class="custom-btn">Add Doctor Department</button>
+                            </form>
+                        </br>
+                            <form action="{% url 'adminpanel:doctor_department_list' %}" method="get" style="display:inline-block;">
+                                <button type="submit" class="custom-btn">List Doctor Departments</button>
+                            </form>
+                        </br>
+                        </div>
+                    </div></li>
+                    <li>    <div class="dropdown">
+                        <button class="dropbtn">Doctor Registration</button>
+                        <div class="dropdown-content">
+                            <form action="{% url 'adminpanel:doctor_registration' %}" method="get" style="display:inline-block;">
+                                <button type="submit" class="custom-btn">Add Doctor</button>
+                            </form>
+                        </br>
+                            <form action="{% url 'adminpanel:doctor_list' %}" method="get" style="display:inline-block;">
+                                <button type="submit" class="custom-btn">View All Doctors</button>
+                            </form>
+                        </br>
+                        </div>
+                    </div></li>
+                    <li>    <div class="dropdown">
+                        <button class="dropbtn">Patient Registration</button>
+                        <div class="dropdown-content">
+                            <form action="{% url 'adminpanel:patient_registration' %}" method="get" style="display:inline-block;">
+                                <button type="submit" class="custom-btn">Add Patient</button>
+                            </form>
+                        </br>
+                            <form action="{% url 'adminpanel:patient_list' %}" method="get" style="display:inline-block;">
+                                <button type="submit" class="custom-btn">View All Patients</button>
+                            </form>
+                        </br>
+                        </div>
+                    </div>
+                   </li>
+                    
+                                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Appointments</button>
+                            <div class="dropdown-content">
+                                <form action="{% url 'adminpanel:appointment_list' %}" method="get" style="display:inline-block;">
+                                    <button type="submit" class="custom-btn">View Appointments</button>
+                                </form>
+                                <form action="{% url 'adminpanel:book_appointment' %}" method="get" style="display:inline-block;">
+                                    <button type="submit" class="custom-btn">Book Appointment</button>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+
+
+                                        <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">News</button>
+                            <div class="dropdown-content">
+                                <form action="{% url 'adminpanel:create_news' %}" method="get" style="display:inline-block;">
+                                    <button type="submit" class="custom-btn">Create News</button>
+                                </form>
+                                <form action="{% url 'adminpanel:news_list' %}" method="get" style="display:inline-block;">
+                                    <button type="submit" class="custom-btn">News List</button>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                                      <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">manage vacancies</button>
+                            <div class="dropdown-content">
+                                <form action="{% url 'adminpanel:create_vacancy' %}" method="get" style="display:inline-block;">
+                                    <button type="submit" class="custom-btn">Create Vacancy</button>
+                                </form>
+                                <form action="{% url 'adminpanel:vacancy_list' %}" method="get" style="display:inline-block;">
+                                    <button type="submit" class="custom-btn">List vacancies</button>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Vacancy applications</button>
+                            <div class="dropdown-content">
+                                <form action="{% url 'adminpanel:active_vacancy_list' %}" method="get" style="display:inline-block;">
+                                    <button type="submit" class="custom-btn">Active applications</button>
+                                </form>
+                                <form action="{% url 'adminpanel:application_list_by_vacancy' %}" method="get" style="display:inline-block;">
+                                    <button type="submit" class="custom-btn">List vacancies</button>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+
+
+                </br>
+                                        <ul class="nav navbar-nav navbar-right">  <!-- Separate ul for logout -->
+                        <li>
+                            <form method="POST" action="{% url 'adminpanel:adminpanel_logout' %}" class="logout-form">
+                                {% csrf_token %}
+                                <button type="submit" class="LogoutBtn">
+                                    <div class="LogoutIcon">
+                                        <svg viewBox="0 0 512 512">
+                                            <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="LogoutText">Logout</div>
+                                </button>
+                            </form>
+                        </li>
+                
+                </div>
+            </ul>
+        </div>
+    </section>
+
+
+    {% block adminpage %}{% endblock %}
+
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.sticky.js' %}"></script>
+    <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/smoothscroll.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+
+</body>
+</html>

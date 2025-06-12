@@ -1,0 +1,39 @@
+{% extends 'staffbase.html' %}
+    {% block staffpage %}
+    <h2>Appointment List</h2>
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Doctor</th>
+          <th>Patient</th>
+          <th>Booking Date & Time</th>
+          <th>Slot Time</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for appointment in appointments %}
+          <tr>
+            <td>{{ appointment.doctor.name }}</td>
+            <td>{{ appointment.patient.first_name }}</td>
+            <td>{{ appointment.booking_date }}</td>
+            <td>{{ appointment.slot_time.start_time }} - {{ appointment.slot_time.end_time }}</td>
+            <td>
+              <a href="{% url 'staff:booking_details' appointment.id %}" class="btn btn-sm btn-info">View</a>
+              <a href="{% url 'staff:booking_update' appointment.id %}" class="btn btn-sm btn-warning">Edit</a>
+              <a href="{% url 'staff:booking_delete' appointment.id %}" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="5">No bookings found.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  
+    <a href="{% url 'staff:book_appointment' %}" class="btn btn-primary">Book New Appointment</a>
+  {% endblock %}
+
+

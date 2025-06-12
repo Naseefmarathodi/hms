@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Login</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        body {
+            background: linear-gradient(to right, #e0f7fa, #ffffff);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+        }
+
+        .login-container {
+            max-width: 450px;
+            margin: 80px auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-top: 6px solid #0097a7;
+        }
+
+        .login-title {
+            color: #006064;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #004d40;
+        }
+
+        .btn-primary {
+            background-color: #00796b;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #004d40;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .links a {
+            color: #006064;
+            text-decoration: none;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2 class="login-title">Patient Login Portal</h2>
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" id="username" required placeholder="Enter your username">
+            </div>
+
+            <div class="form-group mb-4">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="password" required placeholder="Enter your password">
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+
+            <div class="links">
+                <div><a href="{% url 'forgot_password' %}">Forgot Password?</a></div>
+                <div><a href="{% url 'index' %}">Back to Home</a></div>
+            </div>
+        </form>
+    </div>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{% extends 'doctorbase.html' %}
+{% load static %}
+
+{% block doctorpage %}
+<div class="container mt-4">
+    <h3>Search Patient for Visit</h3>
+    <form method="get" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="phone" placeholder="Enter Patient Phone Number" class="form-control" value="{{ phone_query }}">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+
+    {% if patient %}
+        <div class="card mb-4">
+            <div class="card-header">
+                Patient Details
+            </div>
+            <div class="card-body">
+                <p><strong>Name:</strong> {{ patient.first_name }} {{ patient.last_name }}</p>
+                <p><strong>MR No:</strong> {{ patient.mr_no }}</p>
+                <p><strong>Phone:</strong> {{ patient.phone_number }}</p>
+            </div>
+        </div>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            {% if visit.scanning_pdf %}
+                <p>
+                    <strong>Uploaded PDF:</strong><br>
+                    <a href="{{ visit.scanning_pdf.url }}" target="_blank" class="btn btn-info btn-sm">View</a>
+                    <a href="{{ visit.scanning_pdf.url }}" download class="btn btn-success btn-sm">Download</a>
+                </p>
+            {% endif %}
+
+            <button type="submit" class="btn btn-success">Save Visit</button>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}

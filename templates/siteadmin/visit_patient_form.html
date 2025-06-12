@@ -1,0 +1,25 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Patient</th>
+            <th>Doctor</th>
+            <th>Visit Date</th>
+            <th>Entered By</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for visit in patient_visits %}
+            <tr>
+                <td>{{ visit.patient.first_name }} {{ visit.patient.last_name }}</td>
+                <td>{{ visit.doctor.name|default:"N/A" }}</td>
+                <td>{{ visit.visit_date|date:"Y-m-d H:i" }}</td>
+                <td>{{ visit.created_by.username|default:"Unknown" }}</td>
+                <td>
+                    <a href="{% url 'edit_patient_visit' visit.id %}" class="btn btn-primary btn-sm">Edit</a>
+                    <a href="{% url 'delete_patient_visit' visit.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

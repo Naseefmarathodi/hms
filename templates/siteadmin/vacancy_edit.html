@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block adminpage %}
+
+<div class="container mt-4">
+    <h2>Edit Vacancy</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary mt-2">Update Vacancy</button>
+        <a href="{% url 'adminpanel:vacancy_list' %}" class="btn btn-secondary mt-2">Cancel</a>
+    </form>
+</div>
+
+{% endblock %}
